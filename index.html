@@ -1,0 +1,1242 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <title>Portfolio — Etunimi Sukunimi</title>
+  <meta name="description" content="Etunimi Sukunimi — portfolio: projektit, osaaminen ja yhteystiedot." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Inter:wght@300..900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      /* Luxury / editorial + cyber-ink accents */
+      --bg0:#07070a;
+      --bg1:#0c0d12;
+      --ink:#e9e7df;
+      --muted:rgba(233,231,223,.70);
+      --faint:rgba(233,231,223,.12);
+      --line:rgba(233,231,223,.16);
+
+      --gold:#d9c58f;
+      --acid:#b6ff6a;
+      --ember:#ff5a3d;
+      --sky:#8ee8ff;
+
+      --card:rgba(255,255,255,.06);
+      --glass:rgba(12,13,18,.55);
+
+      --shadow: 0 18px 70px rgba(0,0,0,.55);
+      --shadow2: 0 8px 30px rgba(0,0,0,.45);
+
+      --radius: 22px;
+      --radius2: 14px;
+
+      --max: 1180px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 800px at 20% 15%, rgba(217,197,143,.18), transparent 60%),
+        radial-gradient(900px 600px at 78% 22%, rgba(142,232,255,.12), transparent 55%),
+        radial-gradient(1000px 700px at 65% 85%, rgba(182,255,106,.10), transparent 58%),
+        linear-gradient(180deg, var(--bg0), var(--bg1) 55%, #07080c);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      letter-spacing: .2px;
+      overflow-x:hidden;
+    }
+
+    a{ color:inherit; text-decoration: none; }
+    button, input, textarea{ font: inherit; color:inherit; }
+    ::selection{ background: rgba(182,255,106,.28); }
+
+    /* subtle grain */
+    .grain{
+      position:fixed; inset:0;
+      pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+      mix-blend-mode:overlay;
+      opacity:.35;
+      transform: translateZ(0);
+      z-index:0;
+    }
+
+    /* layout */
+    .wrap{
+      position:relative;
+      z-index:1;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 22px clamp(16px, 3vw, 34px) 80px;
+    }
+
+    header{
+      position:sticky; top:0;
+      z-index:50;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: linear-gradient(180deg, rgba(7,7,10,.78), rgba(7,7,10,.35));
+      border-bottom: 1px solid rgba(233,231,223,.08);
+    }
+
+    .nav{
+      max-width: var(--max);
+      margin:0 auto;
+      padding: 14px clamp(16px, 3vw, 34px);
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 12px;
+    }
+
+    .brand{
+      display:flex; align-items:baseline; gap:10px;
+      min-width: 210px;
+    }
+    .brand .mark{
+      width: 12px; height: 12px; border-radius: 99px;
+      background: radial-gradient(circle at 30% 30%, var(--acid), rgba(182,255,106,.2) 55%, transparent 62%),
+                  radial-gradient(circle at 70% 70%, var(--gold), rgba(217,197,143,.18) 60%, transparent 66%);
+      box-shadow: 0 0 0 1px rgba(233,231,223,.16), 0 0 24px rgba(182,255,106,.22);
+    }
+    .brand strong{
+      font-family: Fraunces, serif;
+      font-weight: 650;
+      letter-spacing: .3px;
+      font-size: 16px;
+    }
+    .brand span{
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .navlinks{
+      display:none;
+      gap: 18px;
+      align-items:center;
+    }
+    .navlinks a{
+      color: rgba(233,231,223,.78);
+      font-size: 13px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      padding: 10px 10px;
+      border-radius: 12px;
+      transition: transform .18s ease, background .18s ease, color .18s ease;
+    }
+    .navlinks a:hover{
+      background: rgba(255,255,255,.06);
+      color: var(--ink);
+      transform: translateY(-1px);
+    }
+
+    .navcta{
+      display:flex; align-items:center; gap:10px;
+    }
+
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      border: 1px solid rgba(233,231,223,.14);
+      background: rgba(255,255,255,.04);
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: rgba(233,231,223,.78);
+      box-shadow: var(--shadow2);
+    }
+    .chip i{
+      width:8px; height:8px; border-radius:99px;
+      background: var(--acid);
+      box-shadow: 0 0 0 3px rgba(182,255,106,.12);
+      display:inline-block;
+    }
+
+    .btn{
+      border: 1px solid rgba(233,231,223,.16);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+      padding: 10px 12px;
+      border-radius: 999px;
+      display:inline-flex; align-items:center; gap:10px;
+      cursor:pointer;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    .btn:hover{
+      transform: translateY(-2px);
+      border-color: rgba(182,255,106,.35);
+      box-shadow: 0 16px 46px rgba(0,0,0,.52), 0 0 0 6px rgba(182,255,106,.08);
+    }
+    .btn:active{ transform: translateY(0px) scale(.99); }
+    .btn svg{ width:16px; height:16px; opacity:.9; }
+
+    .iconbtn{
+      width: 42px; height: 42px;
+      border-radius: 999px;
+      border: 1px solid rgba(233,231,223,.14);
+      background: rgba(255,255,255,.04);
+      cursor:pointer;
+      display:grid; place-items:center;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .iconbtn:hover{
+      transform: translateY(-2px);
+      border-color: rgba(142,232,255,.35);
+      background: rgba(142,232,255,.08);
+    }
+
+    /* hero */
+    .hero{
+      padding: clamp(26px, 5vw, 56px) 0 20px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: clamp(18px, 4vw, 40px);
+      align-items: start;
+    }
+
+    .kicker{
+      display:flex; flex-wrap:wrap; gap:10px;
+      align-items:center;
+      margin: 10px 0 18px;
+    }
+
+    .pill{
+      border: 1px solid rgba(233,231,223,.14);
+      background: rgba(255,255,255,.04);
+      border-radius: 999px;
+      padding: 8px 12px;
+      color: rgba(233,231,223,.78);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      display:inline-flex; gap:8px; align-items:center;
+    }
+    .pill b{ color: var(--ink); font-weight: 700; letter-spacing: .08em; }
+    .pill .dot{
+      width:8px; height:8px; border-radius: 99px; display:inline-block;
+      background: radial-gradient(circle at 30% 30%, var(--gold), var(--ember));
+      box-shadow: 0 0 0 3px rgba(217,197,143,.12);
+    }
+
+    h1{
+      font-family: Fraunces, serif;
+      font-weight: 650;
+      font-size: clamp(42px, 5.5vw, 70px);
+      line-height: .96;
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+    }
+    .lead{
+      margin: 0 0 22px;
+      color: rgba(233,231,223,.76);
+      font-size: clamp(16px, 1.35vw, 18px);
+      line-height: 1.65;
+      max-width: 62ch;
+    }
+
+    .actions{
+      display:flex; flex-wrap:wrap; gap:12px;
+      align-items:center;
+      margin: 18px 0 0;
+    }
+
+    .btn.primary{
+      border-color: rgba(182,255,106,.28);
+      background:
+        radial-gradient(120% 220% at 20% 0%, rgba(182,255,106,.28), transparent 45%),
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+    }
+
+    .btn.ghost{
+      background: rgba(255,255,255,.03);
+    }
+
+    .meta{
+      margin-top: 16px;
+      display:flex; gap:12px; flex-wrap:wrap;
+      color: rgba(233,231,223,.66);
+      font-size: 13px;
+    }
+    .meta a{
+      color: rgba(233,231,223,.74);
+      border-bottom: 1px dashed rgba(233,231,223,.22);
+    }
+    .meta a:hover{ color: var(--ink); border-bottom-color: rgba(182,255,106,.55); }
+
+    /* hero art panel */
+    .panel{
+      position:relative;
+      border-radius: var(--radius);
+      border: 1px solid rgba(233,231,223,.14);
+      background:
+        radial-gradient(900px 520px at 20% 20%, rgba(217,197,143,.16), transparent 55%),
+        radial-gradient(700px 540px at 70% 70%, rgba(142,232,255,.10), transparent 58%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      min-height: 420px;
+    }
+
+    .panel .frame{
+      position:absolute; inset:0;
+      background:
+        linear-gradient(90deg, rgba(233,231,223,.08) 1px, transparent 1px) 0 0 / 24px 24px,
+        linear-gradient(0deg, rgba(233,231,223,.06) 1px, transparent 1px) 0 0 / 24px 24px;
+      mask-image: radial-gradient(160px 160px at 20% 20%, #000 30%, transparent 70%),
+                  radial-gradient(220px 220px at 70% 70%, #000 25%, transparent 70%),
+                  linear-gradient(#000, #000);
+      opacity:.55;
+    }
+
+    .panel .badge{
+      position:absolute;
+      left: 16px; top: 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(233,231,223,.16);
+      background: rgba(7,7,10,.55);
+      backdrop-filter: blur(10px);
+      padding: 10px 12px;
+      display:flex; gap:10px; align-items:center;
+      box-shadow: var(--shadow2);
+      max-width: calc(100% - 32px);
+    }
+    .badge .mini{
+      width: 34px; height: 34px;
+      border-radius: 12px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(182,255,106,.8), transparent 60%),
+        radial-gradient(circle at 70% 70%, rgba(217,197,143,.7), transparent 62%),
+        rgba(255,255,255,.04);
+      border: 1px solid rgba(233,231,223,.14);
+      box-shadow: 0 0 0 4px rgba(182,255,106,.08);
+    }
+    .badge strong{
+      font-size: 13px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .badge span{
+      display:block;
+      margin-top: 2px;
+      color: rgba(233,231,223,.72);
+      font-size: 12px;
+    }
+
+    .panel .orb{
+      position:absolute; inset:auto;
+      width: 320px; height: 320px;
+      border-radius: 999px;
+      right: -90px; top: 80px;
+      background:
+        radial-gradient(circle at 25% 20%, rgba(182,255,106,.50), transparent 55%),
+        radial-gradient(circle at 70% 80%, rgba(255,90,61,.40), transparent 58%),
+        radial-gradient(circle at 55% 45%, rgba(142,232,255,.25), transparent 62%),
+        rgba(255,255,255,.02);
+      filter: blur(.2px);
+      box-shadow: 0 0 0 1px rgba(233,231,223,.10), 0 26px 90px rgba(0,0,0,.55);
+      transform: rotate(18deg);
+    }
+
+    .panel .quote{
+      position:absolute;
+      left: 18px; right: 18px; bottom: 18px;
+      border-radius: var(--radius2);
+      border: 1px solid rgba(233,231,223,.14);
+      background: rgba(7,7,10,.52);
+      backdrop-filter: blur(10px);
+      padding: 14px 14px 14px;
+      box-shadow: var(--shadow2);
+    }
+    .quote p{
+      margin:0;
+      color: rgba(233,231,223,.78);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+    .quote p b{ color: var(--ink); }
+
+    /* sections */
+    section{
+      padding: 28px 0;
+      border-top: 1px solid rgba(233,231,223,.08);
+      margin-top: 20px;
+    }
+
+    .sectionhead{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap: 18px;
+      margin-bottom: 16px;
+    }
+    h2{
+      font-family: Fraunces, serif;
+      font-weight: 600;
+      font-size: clamp(24px, 3vw, 34px);
+      margin:0;
+      letter-spacing: -0.01em;
+    }
+    .sub{
+      color: rgba(233,231,223,.70);
+      max-width: 55ch;
+      line-height: 1.6;
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+
+    .card{
+      border: 1px solid rgba(233,231,223,.14);
+      background: rgba(255,255,255,.04);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: 0 14px 44px rgba(0,0,0,.38);
+      position:relative;
+      overflow:hidden;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+    }
+    .card:hover{
+      transform: translateY(-3px);
+      border-color: rgba(142,232,255,.30);
+      background: rgba(255,255,255,.05);
+      box-shadow: 0 20px 70px rgba(0,0,0,.55);
+    }
+
+    .card .topline{
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(233,231,223,.72);
+    }
+    .tag .t{
+      width:10px; height:10px; border-radius: 3px;
+      background: linear-gradient(135deg, var(--gold), rgba(217,197,143,.12));
+      border: 1px solid rgba(233,231,223,.12);
+    }
+    .tag .t.alt{
+      background: linear-gradient(135deg, var(--sky), rgba(142,232,255,.12));
+    }
+    .tag .t.hot{
+      background: linear-gradient(135deg, var(--ember), rgba(255,90,61,.12));
+    }
+
+    .card h3{
+      font-family: Fraunces, serif;
+      font-weight: 600;
+      margin: 0 0 8px;
+      font-size: 20px;
+      letter-spacing: -0.01em;
+    }
+    .card p{
+      margin:0 0 12px;
+      color: rgba(233,231,223,.72);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+    .card .chips{
+      display:flex; flex-wrap:wrap; gap:8px;
+      margin-top: 12px;
+    }
+    .smallchip{
+      font-size: 12px;
+      color: rgba(233,231,223,.72);
+      border: 1px solid rgba(233,231,223,.14);
+      background: rgba(255,255,255,.03);
+      padding: 7px 10px;
+      border-radius: 999px;
+    }
+
+    .card .linkrow{
+      margin-top: 12px;
+      display:flex; flex-wrap:wrap; gap:10px;
+      align-items:center;
+    }
+    .link{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(233,231,223,.14);
+      background: rgba(255,255,255,.03);
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+      font-size: 13px;
+      color: rgba(233,231,223,.80);
+    }
+    .link:hover{
+      transform: translateY(-2px);
+      border-color: rgba(182,255,106,.35);
+      background: rgba(182,255,106,.06);
+      color: var(--ink);
+    }
+    .link svg{ width: 16px; height: 16px; opacity:.9; }
+
+    /* project cards span */
+    .span-7{ grid-column: span 12; }
+    .span-5{ grid-column: span 12; }
+    .span-6{ grid-column: span 12; }
+
+    /* skills */
+    .skills{
+      grid-column: 1 / -1;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .skillbox{ grid-column: span 12; }
+
+    .meter{
+      height: 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(233,231,223,.12);
+      background: rgba(255,255,255,.03);
+      overflow:hidden;
+      margin-top: 10px;
+    }
+    .fill{
+      height: 100%;
+      width: var(--w, 60%);
+      background:
+        linear-gradient(90deg, rgba(182,255,106,.85), rgba(142,232,255,.55) 60%, rgba(217,197,143,.65));
+      border-radius: 999px;
+      box-shadow: 0 0 0 1px rgba(0,0,0,.25) inset, 0 0 18px rgba(182,255,106,.18);
+    }
+
+    /* contact */
+    .contactgrid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      align-items: start;
+    }
+    .contactcard{ grid-column: span 12; }
+    .formcard{ grid-column: span 12; }
+
+    label{
+      display:block;
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(233,231,223,.72);
+      margin-bottom: 8px;
+    }
+    input, textarea{
+      width:100%;
+      border-radius: 14px;
+      border: 1px solid rgba(233,231,223,.14);
+      background: rgba(255,255,255,.03);
+      padding: 12px 12px;
+      outline:none;
+      transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+    }
+    textarea{ min-height: 120px; resize: vertical; }
+    input:focus, textarea:focus{
+      border-color: rgba(142,232,255,.38);
+      box-shadow: 0 0 0 6px rgba(142,232,255,.10);
+    }
+
+    .formrow{ display:grid; grid-template-columns: 1fr; gap: 12px; }
+    .hint{
+      color: rgba(233,231,223,.62);
+      font-size: 13px;
+      line-height: 1.55;
+      margin: 10px 0 0;
+    }
+
+    footer{
+      margin-top: 30px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(233,231,223,.08);
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+      align-items:center;
+      justify-content:space-between;
+      color: rgba(233,231,223,.62);
+      font-size: 13px;
+    }
+    .footlinks{
+      display:flex; flex-wrap:wrap; gap:12px;
+    }
+    .footlinks a{
+      color: rgba(233,231,223,.72);
+      border-bottom: 1px dashed rgba(233,231,223,.18);
+    }
+    .footlinks a:hover{
+      color: var(--ink);
+      border-bottom-color: rgba(217,197,143,.55);
+    }
+
+    /* reveal */
+    .reveal{
+      opacity:0;
+      transform: translateY(10px);
+      animation: up .7s ease forwards;
+    }
+    @keyframes up{
+      to{ opacity:1; transform: translateY(0); }
+    }
+    .delay-1{ animation-delay: .05s; }
+    .delay-2{ animation-delay: .14s; }
+    .delay-3{ animation-delay: .22s; }
+    .delay-4{ animation-delay: .30s; }
+    .delay-5{ animation-delay: .38s; }
+
+    /* mobile menu */
+    .drawer{
+      display:none;
+      position: fixed;
+      inset: 0;
+      background: rgba(7,7,10,.62);
+      backdrop-filter: blur(10px);
+      z-index: 80;
+    }
+    .drawer .sheet{
+      position:absolute;
+      right: 12px; left: 12px; top: 70px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(233,231,223,.14);
+      background: rgba(12,13,18,.70);
+      box-shadow: var(--shadow);
+      padding: 14px;
+    }
+    .drawer a{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(233,231,223,.10);
+      background: rgba(255,255,255,.03);
+      margin-bottom: 10px;
+      color: rgba(233,231,223,.80);
+      font-size: 14px;
+    }
+    .drawer a:hover{
+      border-color: rgba(182,255,106,.30);
+      background: rgba(182,255,106,.06);
+      color: var(--ink);
+    }
+    .drawer .close{
+      display:flex; justify-content:space-between; align-items:center;
+      margin-bottom: 12px;
+      color: rgba(233,231,223,.72);
+      font-size: 13px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    /* responsive */
+    @media (min-width: 860px){
+      .navlinks{ display:flex; }
+      .iconbtn{ display:none; }
+      .span-7{ grid-column: span 7; }
+      .span-5{ grid-column: span 5; }
+      .span-6{ grid-column: span 6; }
+      .skillbox{ grid-column: span 6; }
+      .contactcard{ grid-column: span 5; }
+      .formcard{ grid-column: span 7; }
+      .formrow{ grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 980px){
+      .hero{ grid-template-columns: 1fr; }
+      .panel{ min-height: 360px; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .reveal{ opacity:1; transform:none; animation:none; }
+      .btn, .card, .link, .navlinks a, .iconbtn{ transition:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header>
+    <nav class="nav" aria-label="Päävalikko">
+      <a class="brand" href="#top">
+        <span class="mark" aria-hidden="true"></span>
+        <div>
+          <strong>Etunimi Sukunimi</strong>
+          <span>Designer / Developer</span>
+        </div>
+      </a>
+
+      <div class="navlinks" role="navigation" aria-label="Sivulinkit">
+        <a href="#projektit">Projektit</a>
+        <a href="#osaaminen">Osaaminen</a>
+        <a href="#minusta">Minusta</a>
+        <a href="#yhteys">Yhteys</a>
+      </div>
+
+      <div class="navcta">
+        <div class="chip" title="Saatavilla projekteihin">
+          <i aria-hidden="true"></i>
+          <span>Saatavilla: <b>Q1</b></span>
+        </div>
+
+        <button class="btn ghost" id="copyEmailBtn" type="button" title="Kopioi sähköposti">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M8 7.5V6.6C8 5.16 9.16 4 10.6 4H17.4C18.84 4 20 5.16 20 6.6V13.4C20 14.84 18.84 16 17.4 16H16.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            <path d="M6.6 8H13.4C14.84 8 16 9.16 16 10.6V17.4C16 18.84 14.84 20 13.4 20H6.6C5.16 20 4 18.84 4 17.4V10.6C4 9.16 5.16 8 6.6 8Z" stroke="currentColor" stroke-width="1.7"/>
+          </svg>
+          <span id="emailText">etunimi@domain.fi</span>
+        </button>
+
+        <button class="iconbtn" id="menuBtn" type="button" aria-label="Avaa valikko" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 7h14M5 12h14M5 17h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="sheet" role="dialog" aria-label="Valikko">
+      <div class="close">
+        <span>Valikko</span>
+        <button class="btn ghost" id="closeDrawerBtn" type="button">
+          <span>Sulje</span>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7 7l10 10M17 7L7 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <a href="#projektit" data-close>Projektit <span aria-hidden="true">→</span></a>
+      <a href="#osaaminen" data-close>Osaaminen <span aria-hidden="true">→</span></a>
+      <a href="#minusta" data-close>Minusta <span aria-hidden="true">→</span></a>
+      <a href="#yhteys" data-close>Yhteys <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+
+  <main id="top" class="wrap">
+    <section class="hero" aria-label="Esittely">
+      <div>
+        <div class="kicker reveal delay-1">
+          <span class="pill"><span class="dot" aria-hidden="true"></span> <b>Portfolio</b> 2026</span>
+          <span class="pill">Helsinki • Etä</span>
+          <span class="pill">Fokus: UI / Frontend</span>
+        </div>
+
+        <h1 class="reveal delay-2">
+          Rakennan <span style="color:var(--gold)">tyylikkäitä</span> ja <span style="color:var(--acid)">nopeita</span> digitaalisia tuotteita.
+        </h1>
+
+        <p class="lead reveal delay-3">
+          Olen <b>Etunimi Sukunimi</b>, suunnittelua ymmärtävä kehittäjä. Teen selkeitä käyttöliittymiä, huolellisia yksityiskohtia ja
+          tuotantovalmiita toteutuksia. Tämä sivu toimii GitHub Pages -pohjana.
+        </p>
+
+        <div class="actions reveal delay-4">
+          <a class="btn primary" href="#projektit">
+            <span>Katso projektit</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7 17L17 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M9 7h8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </a>
+
+          <a class="btn ghost" href="#yhteys">
+            <span>Ota yhteyttä</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4.5 7.5h15v9h-15v-9Z" stroke="currentColor" stroke-width="1.7"/>
+              <path d="m5.5 8.5 6.9 5.1c.4.3 1 .3 1.4 0l6.7-5.1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            </svg>
+          </a>
+
+          <a class="btn ghost" href="#minusta" aria-label="Lue lisää minusta">
+            <span>Minusta</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3v18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              <path d="M7 8l5-5 5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="meta reveal delay-5">
+          <span>GitHub: <a href="#" id="githubLink" rel="noreferrer">github.com/kayttaja</a></span>
+          <span>LinkedIn: <a href="#" id="linkedinLink" rel="noreferrer">linkedin.com/in/profiili</a></span>
+          <span>CV: <a href="#" id="cvLink" rel="noreferrer">Lataa PDF</a></span>
+        </div>
+      </div>
+
+      <aside class="panel reveal delay-3" aria-label="Visuaalinen kortti">
+        <div class="frame" aria-hidden="true"></div>
+        <div class="orb" aria-hidden="true"></div>
+
+        <div class="badge">
+          <div class="mini" aria-hidden="true"></div>
+          <div>
+            <strong>Signature stack</strong>
+            <span>React • TypeScript • Figma • CSS</span>
+          </div>
+        </div>
+
+        <div class="quote">
+          <p>
+            “Hyvä käyttöliittymä tuntuu <b>itsestään selvältä</b> — ja näyttää siltä, että joku välitti.”
+          </p>
+        </div>
+      </aside>
+    </section>
+
+    <section id="projektit" aria-label="Projektit">
+      <div class="sectionhead">
+        <div>
+          <h2>Projektit</h2>
+          <p class="sub">Valikoima töitä. Vaihda tekstit, teknologiat ja linkit omiin projekteihisi.</p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <article class="card span-7 reveal" data-reveal>
+          <div class="topline">
+            <div class="tag"><span class="t" aria-hidden="true"></span> Case</div>
+            <span class="tag" style="color: rgba(233,231,223,.55);">2025</span>
+          </div>
+          <h3>Nordic Taskboard</h3>
+          <p>
+            Kevyt Kanban-sovellus: nopea haku, offline-tila ja selkeä typografia. Tavoite: minimoida kitka arjen työssä.
+          </p>
+          <div class="chips" aria-label="Teknologiat">
+            <span class="smallchip">React</span>
+            <span class="smallchip">Vite</span>
+            <span class="smallchip">IndexedDB</span>
+            <span class="smallchip">Playwright</span>
+          </div>
+          <div class="linkrow">
+            <a class="link" href="#" rel="noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M10 14a5 5 0 0 1 0-7l1.2-1.2a5 5 0 0 1 7 7L17 13" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                <path d="M14 10a5 5 0 0 1 0 7L12.8 18.2a5 5 0 0 1-7-7L7 11" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+              <span>Live-demo</span>
+            </a>
+            <a class="link" href="#" rel="noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M9 19c-3 1-3-1.5-4-2m8 4v-3.2c0-.9.3-1.5.8-1.9-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.2 1.2a10.8 10.8 0 0 1 5.8 0C17 3.1 18 3.4 18 3.4c.6 1.6.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.4-2.7 5.4-5.3 5.7.5.4.9 1.2.9 2.4V21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="card span-5 reveal" data-reveal>
+          <div class="topline">
+            <div class="tag"><span class="t alt" aria-hidden="true"></span> UI</div>
+            <span class="tag" style="color: rgba(233,231,223,.55);">2024</span>
+          </div>
+          <h3>Design System — “Kulta”</h3>
+          <p>
+            Komponenttikirjasto ja tokenit: typografia, värit, tilat ja saavutettavuus. Dokumentointi Storybookilla.
+          </p>
+          <div class="chips">
+            <span class="smallchip">Figma</span>
+            <span class="smallchip">Tokens</span>
+            <span class="smallchip">Storybook</span>
+            <span class="smallchip">A11y</span>
+          </div>
+          <div class="linkrow">
+            <a class="link" href="#" rel="noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M9 5h10v10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                <path d="M19 5 10 14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                <path d="M7 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+              <span>Case study</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="card span-6 reveal" data-reveal>
+          <div class="topline">
+            <div class="tag"><span class="t hot" aria-hidden="true"></span> Build</div>
+            <span class="tag" style="color: rgba(233,231,223,.55);">2023</span>
+          </div>
+          <h3>Realtime Audio Notes</h3>
+          <p>
+            Äänimuistiinpanot reaaliajassa: transkriptio, merkinnät ja vienti. Keskityin suorituskykyyn ja virhetiloihin.
+          </p>
+          <div class="chips">
+            <span class="smallchip">Web Audio</span>
+            <span class="smallchip">Web Workers</span>
+            <span class="smallchip">Node</span>
+          </div>
+          <div class="linkrow">
+            <a class="link" href="#" rel="noreferrer"><span>GitHub</span></a>
+            <a class="link" href="#" rel="noreferrer"><span>Demo</span></a>
+          </div>
+        </article>
+
+        <article class="card span-6 reveal" data-reveal>
+          <div class="topline">
+            <div class="tag"><span class="t alt" aria-hidden="true"></span> Concept</div>
+            <span class="tag" style="color: rgba(233,231,223,.55);">2022</span>
+          </div>
+          <h3>Arctic Landing Pages</h3>
+          <p>
+            Sarja laskeutumissivuja: vahva typografia, kokeilevat layoutit ja tarkat mikrointeraktiot.
+          </p>
+          <div class="chips">
+            <span class="smallchip">HTML</span>
+            <span class="smallchip">CSS</span>
+            <span class="smallchip">Motion</span>
+          </div>
+          <div class="linkrow">
+            <a class="link" href="#" rel="noreferrer"><span>Kooste</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="osaaminen" aria-label="Osaaminen">
+      <div class="sectionhead">
+        <div>
+          <h2>Osaaminen</h2>
+          <p class="sub">Mitä teen ja miten teen. Säädä “tasot” omien vahvuuksiesi mukaan.</p>
+        </div>
+      </div>
+
+      <div class="skills">
+        <article class="card skillbox reveal" data-reveal style="--w:88%;">
+          <div class="topline">
+            <div class="tag"><span class="t" aria-hidden="true"></span> Frontend</div>
+            <span class="tag">Vahva</span>
+          </div>
+          <h3>UI engineering</h3>
+          <p>Komponentit, design tokenit, responsiivisuus, animaatiot ja laadukas CSS-arkkitehtuuri.</p>
+          <div class="meter" aria-hidden="true"><div class="fill"></div></div>
+        </article>
+
+        <article class="card skillbox reveal" data-reveal style="--w:76%;">
+          <div class="topline">
+            <div class="tag"><span class="t alt" aria-hidden="true"></span> Product</div>
+            <span class="tag">Vahva</span>
+          </div>
+          <h3>UX & prototypointi</h3>
+          <p>Wireframet → protot → toteutus. Testaan ideoita nopeasti ja teen päätökset datan/heuristiikan avulla.</p>
+          <div class="meter" aria-hidden="true"><div class="fill"></div></div>
+        </article>
+
+        <article class="card skillbox reveal" data-reveal style="--w:64%;">
+          <div class="topline">
+            <div class="tag"><span class="t hot" aria-hidden="true"></span> Quality</div>
+            <span class="tag">Hyvä</span>
+          </div>
+          <h3>Testaus & saavutettavuus</h3>
+          <p>Semanttinen HTML, näppäimistöpolut, kontrastit, sekä perus E2E/pikatestit.</p>
+          <div class="meter" aria-hidden="true"><div class="fill"></div></div>
+        </article>
+
+        <article class="card skillbox reveal" data-reveal style="--w:58%;">
+          <div class="topline">
+            <div class="tag"><span class="t" aria-hidden="true"></span> Backend</div>
+            <span class="tag">Toimiva</span>
+          </div>
+          <h3>API & integraatiot</h3>
+          <p>Tyypitetyt rajapinnat, autentikointi ja perusinfra: tarvittaessa, järkevästi.</p>
+          <div class="meter" aria-hidden="true"><div class="fill"></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="minusta" aria-label="Minusta">
+      <div class="sectionhead">
+        <div>
+          <h2>Minusta</h2>
+          <p class="sub">
+            Kirjoita tähän tiivis tarina: mitä etsit, mihin olet erikoistunut ja millaista arvoa tuot.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <article class="card span-7 reveal" data-reveal>
+          <div class="topline">
+            <div class="tag"><span class="t alt" aria-hidden="true"></span> Lyhyesti</div>
+          </div>
+          <h3>Ajattelen kokonaisuutta, viimeistelen yksityiskohdat</h3>
+          <p>
+            Rakastan vahvaa typografiaa ja rauhallista rytmiä. Teen valintoja, jotka kestävät tuotannossa:
+            selkeät komponentit, järkevät rajat ja mitattava suorituskyky.
+          </p>
+          <p>
+            Kun työskentelen tiimissä, pidän yllä “single source of truth” -ajattelua:
+            design ja koodi puhuvat samaa kieltä.
+          </p>
+          <div class="chips">
+            <span class="smallchip">Design tokens</span>
+            <span class="smallchip">Performance</span>
+            <span class="smallchip">DX</span>
+            <span class="smallchip">A11y</span>
+          </div>
+        </article>
+
+        <aside class="card span-5 reveal" data-reveal>
+          <div class="topline">
+            <div class="tag"><span class="t" aria-hidden="true"></span> Nopeat faktat</div>
+          </div>
+          <h3>Profiili</h3>
+          <p style="margin-bottom:10px;">
+            <b>Sijainti:</b> Helsinki / Etä<br>
+            <b>Kielet:</b> Suomi, English<br>
+            <b>Kiinnostus:</b> design systems, motion, product UI
+          </p>
+          <div class="linkrow">
+            <a class="link" href="#" rel="noreferrer"><span>GitHub</span></a>
+            <a class="link" href="#" rel="noreferrer"><span>LinkedIn</span></a>
+          </div>
+          <p class="hint">Vinkki: lisää tähän myös palkintoja, julkaisuja tai suosittelijoita.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="yhteys" aria-label="Yhteys">
+      <div class="sectionhead">
+        <div>
+          <h2>Yhteys</h2>
+          <p class="sub">
+            Tämä lomake avaa oletussähköpostin (ei vaadi backendia). Päivitä sähköposti ja linkit.
+          </p>
+        </div>
+      </div>
+
+      <div class="contactgrid">
+        <aside class="card contactcard reveal" data-reveal>
+          <div class="topline">
+            <div class="tag"><span class="t hot" aria-hidden="true"></span> Yhteystiedot</div>
+          </div>
+          <h3>Tehdään jotain hyvää</h3>
+          <p>
+            Jos sinulla on projekti, työpaikka tai idea, laita viesti. Vastaan tyypillisesti 24–48h sisällä.
+          </p>
+          <div class="chips">
+            <span class="smallchip">etunimi@domain.fi</span>
+            <span class="smallchip">+358 XX XXX XXXX</span>
+          </div>
+          <div class="linkrow">
+            <a class="link" href="#" rel="noreferrer"><span>Calendly</span></a>
+            <a class="link" href="#" rel="noreferrer"><span>Telegram</span></a>
+          </div>
+        </aside>
+
+        <article class="card formcard reveal" data-reveal>
+          <div class="topline">
+            <div class="tag"><span class="t alt" aria-hidden="true"></span> Viesti</div>
+          </div>
+          <h3>Lähetä viesti</h3>
+
+          <form id="contactForm">
+            <div class="formrow">
+              <div>
+                <label for="name">Nimi</label>
+                <input id="name" name="name" autocomplete="name" placeholder="Etunimi Sukunimi" required />
+              </div>
+              <div>
+                <label for="company">Yritys (valinnainen)</label>
+                <input id="company" name="company" autocomplete="organization" placeholder="Yritys Oy" />
+              </div>
+            </div>
+
+            <div style="margin-top:12px;">
+              <label for="message">Viesti</label>
+              <textarea id="message" name="message" placeholder="Mistä haluat jutella?" required></textarea>
+            </div>
+
+            <div class="actions" style="margin-top:14px;">
+              <button class="btn primary" type="submit">
+                <span>Avaa sähköposti</span>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4.5 7.5h15v9h-15v-9Z" stroke="currentColor" stroke-width="1.7"/>
+                  <path d="m5.5 8.5 6.9 5.1c.4.3 1 .3 1.4 0l6.7-5.1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                </svg>
+              </button>
+
+              <button class="btn ghost" type="button" id="copyMessageBtn">
+                <span>Kopioi viesti</span>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M8 7.5V6.6C8 5.16 9.16 4 10.6 4H17.4C18.84 4 20 5.16 20 6.6V13.4C20 14.84 18.84 16 17.4 16H16.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                  <path d="M6.6 8H13.4C14.84 8 16 9.16 16 10.6V17.4C16 18.84 14.84 20 13.4 20H6.6C5.16 20 4 18.84 4 17.4V10.6C4 9.16 5.16 8 6.6 8Z" stroke="currentColor" stroke-width="1.7"/>
+                </svg>
+              </button>
+            </div>
+
+            <p class="hint" id="toast" role="status" aria-live="polite" style="min-height:1.2em;"></p>
+          </form>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> Etunimi Sukunimi — rakennettu GitHub Pagesille.</div>
+      <div class="footlinks">
+        <a href="#top">Ylös</a>
+        <a href="#projektit">Projektit</a>
+        <a href="#yhteys">Yhteys</a>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // --- config (edit these) ---
+    const PROFILE = {
+      email: "etunimi@domain.fi",
+      github: "https://github.com/kayttaja",
+      linkedin: "https://www.linkedin.com/in/profiili/",
+      cv: "#"
+    };
+
+    // apply profile links
+    const emailText = document.getElementById("emailText");
+    const githubLink = document.getElementById("githubLink");
+    const linkedinLink = document.getElementById("linkedinLink");
+    const cvLink = document.getElementById("cvLink");
+    emailText.textContent = PROFILE.email;
+    githubLink.href = PROFILE.github;
+    linkedinLink.href = PROFILE.linkedin;
+    cvLink.href = PROFILE.cv;
+
+    // year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // mobile drawer
+    const drawer = document.getElementById("drawer");
+    const menuBtn = document.getElementById("menuBtn");
+    const closeDrawerBtn = document.getElementById("closeDrawerBtn");
+
+    function setDrawer(open){
+      drawer.style.display = open ? "block" : "none";
+      drawer.setAttribute("aria-hidden", open ? "false" : "true");
+      menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      if(open){
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "";
+      }
+    }
+    menuBtn?.addEventListener("click", () => setDrawer(true));
+    closeDrawerBtn?.addEventListener("click", () => setDrawer(false));
+    drawer?.addEventListener("click", (e) => {
+      if(e.target === drawer) setDrawer(false);
+    });
+    drawer?.querySelectorAll("[data-close]")?.forEach(a => {
+      a.addEventListener("click", () => setDrawer(false));
+    });
+
+    // smooth scroll with reduced motion respect
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href");
+        if(!id || id === "#") return;
+        const el = document.querySelector(id);
+        if(!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth", block: "start" });
+        history.pushState(null, "", id);
+      });
+    });
+
+    // copy email
+    const toast = document.getElementById("toast");
+    function notify(msg){
+      if(!toast) return;
+      toast.textContent = msg;
+      toast.style.color = "rgba(233,231,223,.72)";
+      clearTimeout(window.__toastT);
+      window.__toastT = setTimeout(() => toast.textContent = "", 2400);
+    }
+
+    document.getElementById("copyEmailBtn")?.addEventListener("click", async () => {
+      try{
+        await navigator.clipboard.writeText(PROFILE.email);
+        notify("Sähköposti kopioitu leikepöydälle.");
+      } catch(e){
+        notify("Kopiointi ei onnistunut. Voit kopioida sähköpostin käsin.");
+      }
+    });
+
+    // contact form: open mailto
+    const form = document.getElementById("contactForm");
+    form?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const company = document.getElementById("company").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      const subject = encodeURIComponent(`Portfolio-yhteydenotto: ${name}${company ? " / " + company : ""}`);
+      const body = encodeURIComponent(
+        `Hei!\n\n` +
+        `${message}\n\n` +
+        `—\n` +
+        `${name}${company ? " (" + company + ")" : ""}\n`
+      );
+      window.location.href = `mailto:${encodeURIComponent(PROFILE.email)}?subject=${subject}&body=${body}`;
+      notify("Avataan sähköposti…");
+    });
+
+    // copy message
+    document.getElementById("copyMessageBtn")?.addEventListener("click", async () => {
+      const name = document.getElementById("name").value.trim();
+      const company = document.getElementById("company").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      const text =
+        `Portfolio-yhteydenotto\n\n` +
+        `Nimi: ${name || "-"}\n` +
+        `Yritys: ${company || "-"}\n\n` +
+        `Viesti:\n${message || "-"}\n`;
+
+      try{
+        await navigator.clipboard.writeText(text);
+        notify("Viesti kopioitu leikepöydälle.");
+      } catch(e){
+        notify("Kopiointi ei onnistunut. Voit valita tekstin ja kopioida käsin.");
+      }
+    });
+
+    // scroll-triggered reveal
+    const io = ("IntersectionObserver" in window) ? new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("reveal");
+          entry.target.style.animationDelay = ".05s";
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 }) : null;
+
+    document.querySelectorAll("[data-reveal]").forEach((el) => {
+      if(prefersReduced){
+        el.style.opacity = 1;
+        el.style.transform = "none";
+        return;
+      }
+      if(io) io.observe(el);
+      else el.classList.add("reveal");
+    });
+
+    // Escape closes drawer
+    window.addEventListener("keydown", (e) => {
+      if(e.key === "Escape" && drawer?.style.display === "block") setDrawer(false);
+    });
+  </script>
+</body>
+</html>

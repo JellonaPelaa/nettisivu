@@ -8,208 +8,8 @@
   <!-- Fontit -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
-  <style>
-    /* ------------------------------
-       YLEISILME
-    ------------------------------ */
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Inter, sans-serif;
-      background: radial-gradient(circle at 20% 20%, #1a1a1a, #0d0d0d 60%);
-      color: #e8e8e8;
-      overflow-x: hidden;
-    }
-
-    main {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
-    }
-
-    h1, h2 {
-      font-family: "Playfair Display", serif;
-      letter-spacing: 0.5px;
-    }
-
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      border-bottom: 2px solid rgba(150, 220, 255, 0.4);
-      padding-bottom: 8px;
-    }
-
-    p, li {
-      font-size: 1.05rem;
-      line-height: 1.6;
-    }
-
-    /* ------------------------------
-       NAVIGAATIO
-    ------------------------------ */
-    header {
-      text-align: center;
-      padding: 40px 20px 20px;
-      position: relative;
-    }
-
-    nav a {
-      margin: 0 12px;
-      color: #9fe8ff;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s ease;
-    }
-
-    nav a:hover {
-      color: #c8f7ff;
-      text-shadow: 0 0 6px #8efcff;
-    }
-
-    /* ------------------------------
-       LIQUID GLASS -KORTIT
-    ------------------------------ */
-    .glass {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(14px);
-      border-radius: 18px;
-      padding: 25px;
-      margin-bottom: 40px;
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.4),
-                  inset 0 0 20px rgba(255, 255, 255, 0.03);
-      animation: fadeIn 1s ease forwards;
-      opacity: 0;
-    }
-
-    /* ------------------------------
-       INFO-OSIO
-    ------------------------------ */
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .info-item h3 {
-      margin: 0 0 6px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #bfeaff;
-    }
-
-    .info-item p {
-      margin: 0;
-      opacity: 0.85;
-    }
-
-    /* ------------------------------
-       SKILL BAR
-    ------------------------------ */
-    .skill-bar {
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 10px;
-      overflow: hidden;
-      height: 14px;
-      margin-bottom: 15px;
-    }
-
-    .skill-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #8efcff, #6ccccc);
-      width: 0;
-      transition: width 1.5s ease;
-    }
-
-    /* ------------------------------
-       PROJEKTILINKIT
-    ------------------------------ */
-    .project-links a {
-      margin-right: 12px;
-      color: #cceeff;
-      font-size: 0.9rem;
-      transition: 0.3s ease;
-    }
-
-    .project-links a:hover {
-      color: #ffffff;
-      text-shadow: 0 0 6px #8efcff;
-    }
-
-    /* ------------------------------
-       PAINIKKEET
-    ------------------------------ */
-    button {
-      background: rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(10px);
-      padding: 12px 24px;
-      border-radius: 10px;
-      font-weight: 700;
-      color: #e8e8e8;
-      cursor: pointer;
-      transition: 0.3s ease;
-      font-size: 1rem;
-    }
-
-    button:hover {
-      background: rgba(255, 255, 255, 0.25);
-      box-shadow: 0 0 12px rgba(150, 220, 255, 0.4);
-    }
-
-    /* ------------------------------
-       TAUSTAHELMET
-    ------------------------------ */
-    .orb {
-      position: fixed;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(150,220,255,0.7), rgba(150,220,255,0.05));
-      filter: blur(12px);
-      animation: float 12s infinite ease-in-out;
-      z-index: -1;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0px) translateX(0px); }
-      50% { transform: translateY(-40px) translateX(20px); }
-      100% { transform: translateY(0px) translateX(0px); }
-    }
-
-    /* ------------------------------
-       SCROLL ANIMAATIOT
-    ------------------------------ */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .hidden {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: 1s ease;
-    }
-
-    .show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ------------------------------
-       FOOTER
-    ------------------------------ */
-    footer {
-      text-align: center;
-      padding: 30px;
-      opacity: 0.7;
-      font-size: 0.9rem;
-    }
-  </style>
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -252,10 +52,10 @@
     <h2>Osaaminen</h2>
 
     <p>Python</p>
-    <div class="skill-bar"><div class="skill-fill" data-width="20%"></div></div>
+    <div class="skill-bar"><div class="skill-fill" data-width="30%"></div></div>
 
     <p>AI-promptaus</p>
-    <div class="skill-bar"><div class="skill-fill" data-width="%"></div></div>
+    <div class="skill-bar"><div class="skill-fill" data-width="20%"></div></div>
 
   <!-- UUSI INFO-OSIO -->
   <section id="info" class="glass hidden">
@@ -284,7 +84,7 @@
 
       <div class="info-item">
         <h3>Kiinnostuksen kohteet</h3>
-        <p>Tekoäly, automaatio, web-kehitys, robotiikka</p>
+        <p>Tekoäly, koodaus, videopelit, robotiikka</p>
       </div>
 
       <div class="info-item">
@@ -299,7 +99,7 @@
     <p>Olen tieto- ja viestintätekniikan opiskelija, jota kiinnostaa koodaus, tekoäly ja videopelit. Opin nopeasti ja nautin siitä, kun saan yhdistää luovuuden ja toteutuksen.</p>
   </section>
 
-  <section id="yhteys" class="glass hidden"> <h2>Yhteys</h2> <!-- Sosiaalilinkit --> <div style="margin-bottom: 25px; display: flex; gap: 12px; flex-wrap: wrap;"> <a href="https://www.linkedin.com/in/leovictorsuni" target="_blank" rel="noopener" style="padding: 10px 18px; border-radius: 10px; background: rgba(255,255,255,0.12); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.25); color: #e8e8e8; text-decoration: none; font-weight: 600; transition: 0.3s;"> LinkedIn </a> <a href="https://github.com/JellonaPelaa" target="_blank" rel="noopener" style="padding: 10px 18px; border-radius: 10px; background: rgba(255,255,255,0.12); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.25); color: #e8e8e8; text-decoration: none; font-weight: 600; transition: 0.3s;"> GitHub </a> <a href="OMA-CV-LINKKI.pdf" target="_blank" rel="noopener" style="padding: 10px 18px; border-radius: 10px; background: rgba(255,255,255,0.12); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.25); color: #e8e8e8; text-decoration: none; font-weight: 600; transition: 0.3s;"> CV </a> </div> <form id="contactForm"> <label for="name">Nimi</label> <input type="text" id="name" name="name" placeholder="Etunimi Sukunimi" required /> <label for="email">Sähköposti</label> <input type="email" id="email" name="email" placeholder="sahkoposti@domain.fi" required /> <label for="message">Viesti</label> <textarea id="message" name="message" placeholder="Kirjoita viestisi tähän" required></textarea> <button type="submit">Lähetä</button> </form>
+  <section id="yhteys" class="glass hidden"> <h2>Yhteystiedot + muut tarvittavat</h2> <!-- Sosiaalilinkit --> <div style="margin-bottom: 25px; display: flex; gap: 12px; flex-wrap: wrap;"> <a href="https://www.linkedin.com/in/leovictorsuni" target="_blank" rel="noopener" style="padding: 10px 18px; border-radius: 10px; background: rgba(255,255,255,0.12); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.25); color: #e8e8e8; text-decoration: none; font-weight: 600; transition: 0.3s;"> LinkedIn </a> <a href="https://github.com/JellonaPelaa" target="_blank" rel="noopener" style="padding: 10px 18px; border-radius: 10px; background: rgba(255,255,255,0.12); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.25); color: #e8e8e8; text-decoration: none; font-weight: 600; transition: 0.3s;"> GitHub </a> <a href="OMA-CV-LINKKI.pdf" target="_blank" rel="noopener" style="padding: 10px 18px; border-radius: 10px; background: rgba(255,255,255,0.12); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.25); color: #e8e8e8; text-decoration: none; font-weight: 600; transition: 0.3s;"> CV </a> </div> <form id="contactForm"> <label for="name">Nimi</label> <input type="text" id="name" name="name" placeholder="Etunimi Sukunimi" required /> <label for="email">Sähköposti</label> <input type="email" id="email" name="email" placeholder="sahkoposti@domain.fi" required /> <label for="message">Viesti</label> <textarea id="message" name="message" placeholder="Kirjoita viestisi tähän" required></textarea> <button type="submit">Lähetä</button> </form>
 
 </main>
 

@@ -198,3 +198,63 @@ footer {
   opacity: 0.7;
   font-size: 0.9rem;
 }
+
+/* ------------------------------
+   PROJEKTIT
+------------------------------ */
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.project-card {
+  border-radius: 18px;
+  overflow: hidden;
+  animation: fadeIn 1s ease forwards;
+  opacity: 0;
+}
+
+.project-image {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.project-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6) 50%, transparent);
+  color: #e8e8e8;
+  z-index: 10;
+}
+
+.project-info h3 {
+  margin: 0 0 8px 0;
+  font-family: "Playfair Display", serif;
+  font-size: 1.3rem;
+  color: #ffc233;
+  letter-spacing: 0.5px;
+}
+
+.project-info p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  opacity: 0.9;
+}

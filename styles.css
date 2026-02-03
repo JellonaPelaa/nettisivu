@@ -1,6 +1,3 @@
-/* ------------------------------
-   YLEISILME
------------------------------- */
 body {
   margin: 0;
   padding: 0;
@@ -38,9 +35,6 @@ p, li {
   line-height: 1.6;
 }
 
-/* ------------------------------
-   NAVIGAATIO
------------------------------- */
 header {
   text-align: center;
   padding: 40px 20px 20px;
@@ -60,9 +54,7 @@ nav a:hover {
   text-shadow: 0 0 6px #ff9500;
 }
 
-/* ------------------------------
-   LIQUID GLASS -KORTIT
------------------------------- */
+
 .glass {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -76,9 +68,7 @@ nav a:hover {
   opacity: 0;
 }
 
-/* ------------------------------
-   INFO-OSIO
------------------------------- */
+
 .info-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -98,9 +88,7 @@ nav a:hover {
   opacity: 0.85;
 }
 
-/* ------------------------------
-   SKILL BAR
------------------------------- */
+
 .skill-bar {
   background: rgba(255, 255, 255, 0.08);
   border-radius: 10px;
@@ -116,9 +104,7 @@ nav a:hover {
   transition: width 1.5s ease;
 }
 
-/* ------------------------------
-   PROJEKTILINKIT
------------------------------- */
+
 .project-links a {
   margin-right: 12px;
   color: #ffc233;
@@ -131,9 +117,7 @@ nav a:hover {
   text-shadow: 0 0 6px #ff9500;
 }
 
-/* ------------------------------
-   PAINIKKEET
------------------------------- */
+
 button {
   background: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.25);
@@ -152,9 +136,7 @@ button:hover {
   box-shadow: 0 0 12px rgba(186, 85, 211, 0.6);
 }
 
-/* ------------------------------
-   TAUSTAHELMET
------------------------------- */
+
 .orb {
   position: fixed;
   border-radius: 50%;
@@ -170,9 +152,7 @@ button:hover {
   100% { transform: translateY(0px) translateX(0px); }
 }
 
-/* ------------------------------
-   SCROLL ANIMAATIOT
------------------------------- */
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -189,9 +169,6 @@ button:hover {
   transform: translateY(0);
 }
 
-/* ------------------------------
-   FOOTER
------------------------------- */
 footer {
   text-align: center;
   padding: 30px;
@@ -199,9 +176,7 @@ footer {
   font-size: 0.9rem;
 }
 
-/* ------------------------------
-   PROJEKTIT
------------------------------- */
+
 .projects-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
